@@ -127,3 +127,41 @@ dog.eat()
 * Class实现继承更加易读，易理解
 * 本质还是语法糖，使用prototype
 * 更易于写java等后端语言的使用
+
+### Promise的语法(基本不问,语法要知道)
+* new Promise实例，而且要return
+* new Promise时要传入函数,函数有resolve和reject两个参数
+* 成功时执行resolve,失败时执行reject
+* then监听结果
+```
+function loadImg (src) {
+    return new Promise(function (resolve, reject) {
+        var img = document.createElement('img');
+        img.onload = function() {
+            resolve(img)
+        }  
+        img.onerror = function() {
+            reject()
+        }
+        img.src=src
+    })
+}
+
+var src = 'https://www.imooc.com/static/img/index/logo2020.png';
+loadImg(src).then(function (img) {
+    console.log(img)
+    return img
+}).then(function (img ) {
+    console.log(img.height)
+}
+```
+
+### ES6其他常用功能
+* let/const
+* 多行字符串/模板变量:`<p>${name}</p>`
+* 解构赋值
+* 块级作用域
+* 函数默认参数
+* 箭头函数
+
+
