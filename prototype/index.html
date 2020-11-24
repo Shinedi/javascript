@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+
+    <div id="div1">
+        <p>4</p>
+    </div>
+    <!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script> -->
+    <script src="./my-jquery.js"></script>
+    <script>
+        /* var $p = $('p');
+        $p.css('font-size', '40px') // css是原型方法
+        alert($p.html())
+
+        var $div = $('#div1');
+        $div.css('color', 'pink')
+        alert($div.html()) */
+        $.fn.getNodeName = function () {
+            alert(this[0].nodeName) 
+        }
+        var $p = $('p');
+        $p.getNodeName()
+    </script>
+</body>
+</html>

@@ -88,7 +88,7 @@ function Animal () {
     }
 }
 // 狗
-function Animal () {
+function Dog () {
     this.dark = function () {
         console.log('dog dark');
     }
@@ -163,5 +163,7 @@ loadImg(src).then(function (img) {
 * 块级作用域
 * 函数默认参数
 * 箭头函数
+
+<img src='../images/39041605451152_.pic_hd.jpg'>
 
 
