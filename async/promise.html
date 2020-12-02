@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>promise test</p>
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+    <script>
+        import 'babel-polyfill'
+       function loadImg (src) {
+            return new Promise(function(resolve, reject) {
+                var img = document.createElement('img')
+                // throw new Error('错了')
+                img.onload = function() {
+                    resolve(img)
+                }
+                img.onerror = function() {
+                    reject('图片加载失败')
+                }
+                img.src = src
+            })
+       }
+       let src= 'https://img12.360buyimg.com/img/s156x156_jfs/t1/150903/34/8586/17241/5fc5ec72E11a0b9ce/6da3cda8181b0d99_1.png'
+    //    var result = loadImg(src);
+       /* result.then(function(img) {
+           console.log('width', img.width)
+           return img
+       },function() {
+           console.log('error width')
+       }).then(function(img) {
+           console.log('height', img.height)
+       },function() {
+           console.log('error height')
+       }) */
+       /* result.then(function(img) {
+           console.log('width', img.width)
+           return img
+       }).then(function(img) {
+           console.log('height', img.height)
+           return img
+       }).catch(function(e) {
+           // 统一捕获异常
+           console.log(e)
+       }) */
+       var src1 = 'https://img12.360buyimg.com/img/s156x156_jfs/t1/141653/21/16528/22481/5fc5ec63E441e30a1/79c42e95be4df694.png';
+    //    var result1 = loadImg(src1);
+       var src2 = 'https://img12.360buyimg.com/img/jfs/t1/136919/33/18097/101843/5fc51a7bE6879c321/4ebd24bc3448e705.gif';
+    //    var result2 = loadImg(src2);
+       /* result1.then(function (img) {
+            console.log('第一个图片加载完成', img.width);
+            return result2
+       }).then(function (img) {
+            console.log('第二个图片加载完成', img.width);
+       }).catch(function(e) {
+           // 统一捕获异常
+           console.log(e)
+       }) */
+       /* Promise.all([result1, result2]).then(function (datas){
+           console.log(datas[0])
+           console.log(datas[1])
+       })
+       Promise.race([result1, result2]).then(function (data){
+           console.log('race', data)
+       }) */
+       async function load () {
+           const result1 = await loadImg(src1);
+           console.log(result1)
+           const result2 = await loadImg(src2);
+           console.log(result2)
+       }
+       load()
+    </script>
+</body>
+</html>
