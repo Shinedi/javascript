@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="./vue-2.5.13.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{price}}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                price: 100
+            }
+        })
+        // 以下是手写的ppt中的render函数
+        function render() {
+            with(this) { // this就是vm
+                return _c(
+                    'div',
+                    {
+                        attrs: {'id': 'app'}
+                    },
+                    [
+                        _c('p',[_v(_s(price))])
+                    ]
+                )
+            }
+        }
+        function render() {
+            with(this) { // this就是vm
+                return vm._c(
+                    'div',
+                    {
+                        attrs: {'id': 'app'}
+                    },
+                    [
+                        vm._c('p',[vm._v(vm._s(vm.price))]) // vm._v 文本节点 vm._s toString vm._c Dom节点
+                    ]
+                )
+            }
+        }
+        /* var obj = {
+            name: 'zhangsan',
+            age: 20,
+            getAddress:function(){
+                alert('beijing')
+            }
+        }
+        function fn(){
+            alert(obj.name)
+            alert(obj.age)
+            obj.getAddress()
+        }
+        fn1()
+
+        function fn1(){
+            with(obj){
+                alert(age)
+                alert(name)
+                getAddress()
+            }
+        } */
+
+    </script>
+</body>
+</html>

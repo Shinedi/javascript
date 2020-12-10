@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object defintProperty</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <p>Object defintProperty test</p>
+    <script>
+        // var obj = {
+        //     name: 'zhangsan',
+        //     age: 24
+        // }
+        // console.log(obj)
+        /* var obj = {};
+        var _name = 'zhangsan'
+        Object.defineProperty(obj, 'name', {
+            get: function() {
+                console.log('get') // 监听
+                return _name
+            },
+            set: function(newval) {
+                console.log('set') // 监听
+                _name = newval
+            }
+        }) */
+        var vm = {};
+        var data = {
+            price: 100,
+            name: 'zhangsan'
+        }
+        var key, value
+        for(key in data) {
+            (function(key){
+                Object.defineProperty(vm, key, {
+                    get: function() {
+                        console.log('getter')
+                        return data[key]
+                    },
+                    set: function(newval) {
+                        console.log('setter');
+                        data[key] = newval
+                    }
+                })
+            })(key)
+        }
+    </script>
+</body>
+</html>
