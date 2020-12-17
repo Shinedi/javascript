@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">扫一扫</button>
+    <button id="share">分享</button>
+    <script src='./invoke.js'></script>
+    <script>
+        window['_invoke_scan_callback_'] = function(result) {
+            alert(result)
+        }
+        /* function invokeScan(){
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = 'weixin://dl/scan?k1=v1&callback=_invoke_scan_callback_'
+            var body = document.body;
+            body.appendChild(iframe);
+            setTimeout(function(){
+                body.removeChild(iframe);
+                iframe = null
+            })
+        } */
+        document.addEventListener('click', function(){
+            invokeScan()
+            window.invoke.share({title:'',content: 'xxx'}, function(result){
+                if (result.errno == 0) {
+                    alert('分享成功')
+                }
+            })
+        })
+    </script>
+</body>
+</html>
