@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    hahha
+    <script>
+        var obj = {
+            age: 20,
+            name: 'xxx',
+            address: {
+                city : 'beijing'
+            },
+            arr: [1,2,3]
+        }
+        var obj2 = deepClone(obj)
+        obj2.address.city = 'shanghai';
+        console.log(obj.address.city)
+
+        function deepClone (obj = {}) {
+            if(typeof obj != 'object' || obj == null) {
+                return obj;
+            }
+            // 初始化返回结果
+            let result
+            if(obj instanceof Array) {
+                result = [];
+            } else {
+                result = {}
+            }
+            for (var key in obj) {
+                // 保证key不是原型属性
+                if (obj.hasOwnProperty(key)) {
+                    // 递归调用
+                    result[key] = deepClone(obj[key])
+                }
+            }
+            // 返回结果
+            return result;
+        }
+
+        class People {
+            constructor (name) {
+                this.name = name
+            }
+            eat(){
+                console.log(`${this.name} eat something`)
+            }
+        }
+
+        class Student extends People {
+            constructor(name, number) {
+                super(name)
+                this.number = number;
+            }
+            sayHi(){
+                console.log(`姓名${this.name},学号${this.number}`)
+            }
+        }
+
+        class Teacher extends People {
+            constructor(name, major) {
+                super(name)
+                this.major = major;
+            }
+            teach(){
+                console.log(`姓名${this.name},科目${this.major}`)
+            }
+        }
+        let xialuo = new Student('夏洛', '130309')
+        xialuo.sayHi()
+        xialuo.eat()
+        let madongmei = new Teacher('马冬梅', '数学')
+        madongmei.teach()
+        madongmei.eat()
+
+        let a;
+        for (let i=0; i< 10;i++) {
+            a=document.createElement('a');
+            a.innerHTML = i + '<br>'
+            a.addEventListener('click', function(e){
+                e.preventDefault()
+                alert(i)
+            })
+            document.body.appendChild(a)
+        }
+
+        function f1 (a, b, c) {
+            console.log('this', this);
+            console.log(a, b, c)
+            return 'this is fn11'
+        }
+        
+        // 模拟bind
+        Function.prototype.bind1= function(){
+            // 将参数拆解为数组
+            const args = Array.prototype.slice.call(arguments)
+            // 获取this(数组第一项)
+            const t = args.shift()
+            // this对应fn1.bind(...)中的fn1
+            const self = this;
+            // 返回一个函数
+            return function(){
+                return self.apply(t, args)
+            }
+        }
+        const fn2 = f1.bind1({x: 100}, 10, 20, 30)
+        const res = fn2()
+        console.log(res)
+
+        function createCathe() {
+            const data ={};
+            return {
+                set: function(key, val) {
+                    data[key] = val;
+                },
+                get: function(key) {
+                    return data[key]
+                }
+            }
+        }
+        const c = createCathe()
+        c.set('a', 100)
+        console.log(c.get('a'))
+
+
+        const url = 'https://img2.sycdn.imooc.com/54586887000147cc02200220-140-140.jpg'
+
+function loadImg(src){
+    return new Promise((resolve, reject)=> {
+        const img = document.createElement('img');
+        img.onload = () => {
+            resolve(img)
+        }
+        img.onerror = () => {
+            const err = new Error('图片加载失败')
+            reject(img)
+        }
+        img.src = src
+    })
+}
+
+loadImg(url).then(img => {
+    console.log(img.width)
+    return img;
+}).then(img => {
+    console.log(img.height)
+    
+}).catch(err => {
+    console.log(err)
+})
+    </script>
+</body>
+</html>
