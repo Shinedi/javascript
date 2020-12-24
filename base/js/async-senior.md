@@ -34,6 +34,17 @@ setTimeout(function(){
 }, 5000)
 console.log('bye')
 ```
+<img src='./images/event-loop1.png' width="300" height="200"/>
+<img src='./images/event-loop2.png' width="300" height="200"/>
+<img src='./images/event-loop3.png' width="300" height="200"/>
+<img src='./images/event-loop4.png' width="300" height="200"/>
+<img src='./images/event-loop5.png' width="300" height="200"/>
+<img src='./images/event-loop6.png' width="300" height="200"/>
+<img src='./images/event-loop7.png' width="300" height="200"/>
+<img src='./images/event-loop8.png' width="300" height="200"/>
+<img src='./images/event-loop9.png' width="300" height="200"/>
+<img src='./images/event-loop10.png' width="300" height="200"/>
+<img src='./images/event-loop11.png' width="300" height="200"/>
 
 3. 总结
 
