@@ -111,9 +111,13 @@
     private: 允许最终用户做缓存
     public：中间的路由缓存
     ```
+
+
     <img src="./images/force-cache1.png">
     <img src="./images/force-cache_2.png">
     <img src="./images/force-cache_3.png">
+
+    
     * Expires同在Reponnse Headers中，同为控制缓存过期,已被cache-control代替
 6. http缓存-协商缓存
     * 服务端缓存策略(服务端告诉资源没有改动，可以用本地的缓存内容)
