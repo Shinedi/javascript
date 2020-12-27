@@ -51,6 +51,7 @@
         1) post请求：/api/create-blog
         2) post请求： /api/update-blog?id=100
         3) get请求：/api/get-blog?id=100
+        ---
         restful api设计(用method表示操作类型)
         ---
         1) post请求：/api/blog
@@ -110,9 +111,9 @@
     private: 允许最终用户做缓存
     public：中间的路由缓存
     ```
-    <img src="./images/force-cache.png">
-    <img src="./images/force-cache2.png">
-    <img src="./images/force-cache3.png">
+    <img src="./images/force-cache1.png">
+    <img src="./images/force-cache_2.png">
+    <img src="./images/force-cache_3.png">
     * Expires同在Reponnse Headers中，同为控制缓存过期,已被cache-control代替
 6. http缓存-协商缓存
     * 服务端缓存策略(服务端告诉资源没有改动，可以用本地的缓存内容)
@@ -129,9 +130,9 @@
         1) 会优先使用Etag
         2）Last-Modified精确到秒级
         3) 如果资源被重复生成,而内容不变,则Etag更精确
-    <img src="./images/consult-cache.png">
-    <img src="./images/consult-cache2.png">
-    <img src="./images/consult-cache3.png">
+    <img src="./images/consult-cache1.png">
+    <img src="./images/consult-cache_2.png">
+    <img src="./images/consult-cache_3.png">
 8. 刷新操作
     * 正常操作：地址栏输入url,跳转链接,前进后退等
     * 手动刷新
@@ -146,6 +147,6 @@
     * 强制缓存cache-control
     * 协商缓存Last-Modified和Etag,304状态码
     * 完整的流程图
-    <img src="./images/result.png">
+    <img src="./images/result1.png">
 
 
