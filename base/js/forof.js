@@ -18,3 +18,43 @@ const a = [1,2,3]
         console.log(res)
     }
 })()
+
+function test(person){
+    person.age = 26;
+    person = {
+        name: 'yyy',
+        age: 30
+    }
+    return person
+}
+const p1 = {
+    name: 'yck',
+    age: 25
+}
+const p2 = test(p1)
+console.log(p1)
+console.log(p2)
+let timer = null
+input1.addEventListener('keyup',function () {
+    if (timer) {
+        clearTimeout(timer)
+    }
+    timer = setTimeout(()=> {
+        console.log(input.value)
+        timer = null
+    }, 500)
+})
+
+function debounce (fn, delay){
+    let timer = null;
+    
+    return function () {
+        if (timer) {
+            clearTimeout(timer)
+        }
+        timer = setTimeout(()=>{
+            fn.apply(this, arguments)
+            timer = null
+        },delay)
+    }
+}
